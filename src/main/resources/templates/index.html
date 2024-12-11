@@ -11,106 +11,35 @@
 
 <body>
 
-<div id="header">
+<div class="container my-2" align="center">
 
-    <div id="h1right">
-        <h1>Ishita Chourasia</h1>
-        <button type="button" id="btn1">Create Employee Type</button>
-        <button type="button" id="btn2">Delete Employee Type</button>
-        <button type="button" id="btn3">Employee List</button>
-        <button type="button" id="btn4">Add Employee</button>
-    </div>
-</div>
+        <h3>Employee List</h3>
+        <a th:href="@{/add}" class="btn btn-primary btn-sm mb-3">Add Employee</a>
+        <table style="width:80%" border="1"
+               class="table table-striped table-responsive-md">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Designation</th>
+                <th>Update</th>
+                <th>Delete</th>
 
-<div id="content">
+            </tr>
 
-    <div id="div1">
-        Create Employee Type
-
-        <form>
-            <div class="form-group">
-                <label for="name1">Name</label>
-                <input type="input" class="form-control" id="name1" placeholder="Name">
-            </div>
-
-            <button type="button" class="btn btn-default" id="btn5">Add</button>
-
-            <button type="button" class="btn btn-default" id="btn6">Cancel</button>
-        </form>
-
-    </div>
-
-    <div id="div2">
-        Remove Employee type
-
-        <form>
-            <div class="form-group">
-                <div id="myDropdown" class="dropdown-content">
-                    <select id="select1">
-                        <!--<option value="Developer">Developer</option>
-                        <option value="Tester">Tester</option>-->
-                    </select>
-                </div>
-            </div>
-
-            <button type="button" id="btn7" class="btn btn-default">Remove</button>
-
-            <button type="button" id="btn8" class="btn btn-default">Cancel</button>
-        </form>
-
-    </div>
-
-    <div id="div3">
-        Employee List
-        <!--<nav class="navbar navbar-default">
-          <div class="container-fluid">-->
-        <!--<div class="navbar-header">
-          <a class="navbar-brand" href="#">WebSiteName</a>
-        </div>-->
-        <br>
-        <ul id="listemp">
-            <!--<li><a class="active" href="#dev" id="dev">Developer</a></li>
-            <li><a href="#man" id="man">Manager</a></li>
-            -->
-        </ul>
-
-        <!--</div>
-      </nav>-->
-        <div id="eldiv">
-            <ul id="list1" >
-            </ul>
-
-        </div>
-
-        <button type="button" id="eledit" class="btn btn-default" disabled="">Edit</button>
-        <button type="button" id="elrem" class="btn btn-default" disabled="">Remove</button>
-
-    </div>
-
-    <div id="div4">
-        Add Employee
-        <form>
-            <div class="form-group">
-                <label for="name2">Name</label>
-                <input type="input" class="form-control" id="name2" placeholder="Name">
-            </div>
-
-            <div class="form-group">
-                <label for="des">Designation</label>
-                <input type="input" class="form-control" id="des" placeholder="Designation">
-            </div>
-
-            <select id="select2">
-                <!--<option value="Developer">Developer</option>
-                <option value="Tester">Tester</option>-->
-            </select>
-
-            <button type="button" id="addadd" class="btn btn-default">Add</button>
-
-            <button type="button" id="addundo" class="btn btn-default">Undo</button>
-        </form>
-    </div>
-
+            </thead>
+            <tbody>
+            <tr th:each="employee:${allemplist}">
+                <td th:text="${employee.name}"></td>
+                <td th:text="${employee.email}"></td>
+                <td th:text="${employee.age}"></td>
+                <td th:text="${employee.designation}"></td>
+                <td><a href="@{/updateform/{id}(id=${employee.id}}}" class="btn btn-primary">Update</a> </td>
+                <td><a href="@{/delete/{id}(id=${employee.id}}}" class="btn btn-primary">delete</a> </td>
+            </tr>
+            </tbody>
+        </table>
 </div>
 
 
